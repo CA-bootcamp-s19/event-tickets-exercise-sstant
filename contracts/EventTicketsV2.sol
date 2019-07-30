@@ -72,12 +72,12 @@ contract EventTicketsV2 {
             - return the event's ID
     */
 
-    function addEvent(string memory _description, string memory website, uint tickets) public isOwner returns(uint) {
+    function addEvent(string memory description, string memory website, uint tickets) public isOwner returns(uint) {
 
         uint eventId = idGenerator;
 
         events[eventId] = Event({
-            description: _description,
+            description: description,
             website: website,
             totalTickets: tickets,
             sales: 0,
@@ -86,7 +86,7 @@ contract EventTicketsV2 {
 
         idGenerator += 1;
 
-        emit LogEventAdded(_description, website, tickets, eventId);
+        emit LogEventAdded(description, website, tickets, eventId);
 
         return eventId;
 
